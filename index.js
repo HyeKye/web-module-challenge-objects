@@ -16,8 +16,12 @@ The function should:
 */
 
 
-function createMenuItem(/*Your code here*/){
-  /*Your code here*/
+function createMenuItem(name, price, category){
+  return {
+    name: name,
+    price: price,
+    category: category,
+  };
 }
 
 
@@ -51,8 +55,16 @@ const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  
+  discount: function(person){
+    if (person === "teacher" || person === "student") {
+    return this.price - (this.price * 0.25);
+    }
+    else if (person === "public") {
+      return this.price - (this.price * 0.10);
+    }
+  }
 }
+console.log(burger.discount("public"))
 
 
 
@@ -71,7 +83,7 @@ const reviews = [
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3 (not auto-tested): 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
-*/
+*/ console.log(reviews[5].feedback)
 
 
 
@@ -95,8 +107,9 @@ Use the addReview function below to do the following:
 */
 
 
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
+function addReview(array, name, rating, feedback){
+  array.push({name: name, rating: rating, feedback: feedback});
+  return array;
 }
 
 
@@ -112,8 +125,8 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(array, num){
+  return `${array[num].name} gave the restaurant a ${array[num].rating} star review, and their feedback was: ${array[num].feedback}`;
 }
 
   
